@@ -19,8 +19,12 @@ connectDB();
 
 //creamos los endpoints
 app.use("/api/todos", todoRouter);
+app.use("*", (req, res) => {
+  res.send("Hello World");
+});
 
 // levantamos el server
-app.listen(process.env.PORT, () => {
-  console.log("listening on port " + process.env.PORT);
+const PORT = process.env.PORT || 3030;
+app.listen(PORT, () => {
+  console.log("listening on port " + PORT);
 });
